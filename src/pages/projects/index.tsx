@@ -12,12 +12,13 @@ import { useTranslation } from "react-i18next"
 const ProjectsPage = () => {
   const [searchTerm, setSearchTerm] = useState("")
 
-  const handleSearch = (currentSearch) => {
+  const handleSearch = (currentSearch: string) => {
     setSearchTerm(currentSearch)
   }
-  const { t } = (useTranslation as any)()
+  const { t } = useTranslation()
+
   return (
-    // @ts-expect-error children are clearly passed below
+    // @ts-expect-error children are passed correctly, but BlitzLayout type definition seems to cause false positives with children prop inference
     <Layout title="Projects">
       <main className="flex flex-col mx-auto w-full">
         <h1 className="flex justify-center items-center text-3xl">
