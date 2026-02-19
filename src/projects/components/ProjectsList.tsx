@@ -8,7 +8,21 @@ import { useCurrentUser } from "src/users/hooks/useCurrentUser"
 
 const ITEMS_PER_PAGE = 7
 
-export const ProjectsList = ({ searchTerm }) => {
+interface ProjectsListProps {
+  /**
+   * The search term to filter projects by name or description.
+   */
+  searchTerm: string
+}
+
+/**
+ * ProjectsList component displays a paginated list of projects that the current user is a member of.
+ * It also supports filtering by a search term.
+ *
+ * @param {ProjectsListProps} props - The component props.
+ * @returns {JSX.Element} The rendered list of projects.
+ */
+export const ProjectsList = ({ searchTerm }: ProjectsListProps) => {
   const page = Number(router.query.page) || 0
   const currentUser = useCurrentUser()
 
